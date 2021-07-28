@@ -1,0 +1,21 @@
+.scroll-nav {
+  position: fixed;
+  top: 45%;
+  left: 95%;
+  // right: 15px;
+  z-index: 40;
+}
+.scroll-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scroll-list__link {
+  transition: color .4s ease-in-out, font-size .4s ease-in-out, filter .4s ease-in-out;
+}
+.active {
+  color: $color-orange;
+  font-size: 32px;
+  -webkit-filter: drop-shadow(0 0 10px $color-orange);
+  filter: drop-shadow(0 0 10px $color-orange);
+}

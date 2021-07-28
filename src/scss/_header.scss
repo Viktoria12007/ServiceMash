@@ -1,0 +1,116 @@
+.header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // padding-top: 20px;
+  padding-bottom: 20px;
+  // background-color: $color-black;
+  background-color: transparent;
+}
+.logo-link {
+  display: inline-block;
+  margin-top: 20px;
+}
+.logo {
+  width: 140px;
+  height: 50px;
+}
+// .header-nav {
+//   height: 100%;
+// }
+.header-list {
+  display: flex;
+  align-items: flex-start;
+  &__item {
+
+    position: relative;
+    padding-top: 30px;
+    white-space: nowrap;
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+      &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          opacity: 0;
+          border-radius: 100%;
+          border-top: 3px solid $color-orange;
+          -webkit-filter: drop-shadow(0 10px 10px $color-orange);
+          filter: drop-shadow(0 10px 10px $color-orange);
+          transition: opacity .4s ease-in-out;
+      }
+      // &:focus {
+      //     outline: none;
+      // }
+      &:hover > .header-list__link {
+        color: $color-orange;
+    }
+    &:active > .header-list__link {
+      color: $color-orange;
+  }
+      &:hover::before {
+          opacity: 1;
+      }
+      &:active::before {
+        opacity: 1;
+    }
+      // &:focus::before {
+      //     opacity: 1;
+      // }
+  }
+  &__link {
+    transition: color .4s ease-in-out;
+    // &:focus .header-list__item::before {
+    //    opacity: 1;
+    // }
+  &_action {
+    text-decoration: underline;
+  }
+}
+ &__contacts {
+   display: flex;
+   align-items: center;
+  & > svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    fill: $color-white;
+  }
+  &_telephon {
+    display: block;
+    transition: color .4s ease-in-out;
+    & > svg {
+      transition: fill .4s ease-in-out;
+    }
+    &:hover {
+      color: $color-orange;
+    }
+    &:hover > svg {
+      fill: $color-orange;
+    }
+    &:active {
+      color: $color-orange;
+    }
+    &:active > svg {
+      fill: $color-orange;
+    }
+  }
+}
+  &__button {
+    font-weight: 400;
+    color: $color-white;
+    background-color: transparent;
+    transition: color .4s ease-in-out;
+    &:hover {
+      color: $color-orange;
+    }
+    &:active {
+      color: $color-orange;
+    }
+  }
+}
