@@ -43,7 +43,9 @@
   },
   "dependencies": {
     "focus-visible": "^5.2.0",
+    "inputmask": "^5.0.6",
     "jquery": "^3.6.0",
+    "just-validate": "^1.5.0",
     "normalize.css": "^8.0.1"
   }
 }

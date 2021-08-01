@@ -1,4 +1,6 @@
 import '../../node_modules/focus-visible/dist/focus-visible';
+import '../../node_modules/just-validate/dist/js/just-validate';
+import Inputmask from "inputmask";
 import '../scss/main.scss';
 import '../index.html';
 // import $ from 'jquery';
@@ -142,3 +144,130 @@ import '../index.html';
   // });
 
 })();
+
+let selector = document.querySelectorAll('input[type="tel"]');
+selector = Array.from(selector);
+// console.log(selector);
+// let selector = document.querySelector('input[type="tel"]');
+let im = new Inputmask('+7 (999) 999-99-99');
+im.mask(selector);
+
+
+// let selector2 = document.querySelector('input[type="tel"]');
+
+// selector2.addEventListener('input', function(){
+// 	console.log(selector2.value)
+
+
+// 	const re = /^\d*(\.\d+)?$/
+
+// 	console.log(selector2.value.match(/[0-9]/g).length)
+
+
+// 	console.log(selector2.value.replace(/[0-9]/g, "0"));
+
+// });
+
+
+
+const fileInput = document.querySelector('input[type="file"]');
+
+fileInput.addEventListener('change', (e) => {
+	let files = e.currentTarget.files;
+	console.log(files);
+
+	if (files.length) {
+    const namesFiles = [];
+    files = Array.from(files);
+    files.forEach((el) => {
+      namesFiles.push(el.name);
+    })
+    console.log(namesFiles);
+		fileInput.closest('label').querySelector('span').textContent = namesFiles.join(', ');
+	}
+  else {
+		fileInput.closest('label').querySelector('span').textContent = 'Прикрепить файл';
+	}
+
+});
+
+
+
+let validateForms = function(selector, rules, successModal, yaGoal) {
+	new window.JustValidate(selector, {
+		rules: rules,
+    messages: {
+      name: {
+        required: 'Как к вам можно обращаться?',
+        minLength: 'Имя должно содержать минимум 2 символа',
+        maxLength: 'Имя должно содержать не более 30 символов'
+      },
+      company: {
+        required: 'Как называется ваша компания?',
+        minLength: 'Название компании должно содержать минимум 2 символа',
+        maxLength: 'Название компании должно содержать не более 40 символов'
+      },
+      message: {
+        required: 'Пожалуйста, введите сообщение',
+        minLength: 'Ваше сообщение должно содержать минимум 5 символов',
+        maxLength: 'Ваше сообщение должно содержать не более 300 символов'
+      },
+      tel: {
+        required: 'Укажите ваш телефон',
+        function: 'Пожалуйста, введите правильный номер'
+      },
+      email: {
+        required: 'Укажите ваш e-mail',
+        email: 'Пожалуйста, введите правильный e-mail',
+        minLength: 'Ваш e-mail должен содержать минимум 6 символов',
+        maxLength: 'Ваш e-mail должен содержать не более 50 символов'
+      }
+    },
+		submitHandler: function(form) {
+			let formData = new FormData(form);
+
+			let xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						console.log('Отправлено');
+					}
+				}
+			}
+
+			xhr.open('POST', 'mail.php', true);
+			xhr.send(formData);
+
+			form.reset();
+
+			fileInput.closest('label').querySelector('span').textContent = 'Прикрепить файл';
+		}
+	});
+}
+
+validateForms('.application-form', { name: {required: true, minLength: 2, maxLength: 30}, company: {required: true, minLength: 2, maxLength: 40}, message: {required: true, minLength: 5, maxLength: 300}, email: {required: true, email: true, minLength: 6, maxLength: 50}, tel: {required: true, function: () => {
+  // selector.map((el) => {
+  //   const phone = el.inputmask.unmaskedvalue();
+  //   console.log(el);
+  //   console.log(phone.length);
+  //   console.log(Number (phone));
+  //   return Number (phone) && phone.length === 10
+  // })
+  for (let value of selector) {
+    // console.log(selector);
+    const phone = value.inputmask.unmaskedvalue();
+    // console.log(value);
+    // console.log(phone.length);
+    // console.log(Number (phone));
+    return Number (phone) && phone.length === 10
+  }
+  // const phone = selector.inputmask.unmaskedvalue()
+  //   console.log(selector);
+  //   console.log(phone);
+  //   console.log(phone.length);
+  //   console.log(Number (phone));
+
+  //   return Number (phone) && phone.length === 10
+
+}} }, '.thanks-popup', 'send goal');

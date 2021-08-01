@@ -1,52 +1,62 @@
-<?php
+<?
+require_once 'PHPMailer/PHPMailerAutoload.php';
 
-$method = $_SERVER['REQUEST_METHOD'];
+$admin_email = array();
+foreach ( $_POST["admin_email"] as $key => $value ) {
+	array_push($admin_email, $value);
+}
 
-//Script Foreach
+$form_subject = trim($_POST["form_subject"]);
+
+$mail = new PHPMailer;
+$mail->CharSet = 'UTF-8';
+
+
+
 $c = true;
-if ( $method === 'POST' ) {
-
-	$project_name = 'new_project';
-	$admin_email  = 'maxgraph23@gmail.com';
-	$form_subject = 'new_theme';
-
-	foreach ( $_POST as $key => $value ) {
-		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
-			$message .= "
-			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
-			</tr>
-			";
+$message = '';
+foreach ( $_POST as $key => $value ) {
+	if ( $value != ""  && $key != "admin_email" && $key != "form_subject" ) {
+		if (is_array($value)) {
+			$val_text = '';
+			foreach ($value as $val) {
+				if ($val && $val != '') {
+					$val_text .= ($val_text==''?'':', ').$val;
+				}
+			}
+			$value = $val_text;
 		}
-	}
-} else if ( $method === 'GET' ) {
-
-	$project_name = 'new_project';
-	$admin_email  = 'maxgraph23@gmail.com';
-	$form_subject = 'new_theme';
-
-	foreach ( $_GET as $key => $value ) {
-		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
-			$message .= "
-			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
-			</tr>
-			";
-		}
+		$message .= "
+		" . ( ($c = !$c) ? '<tr>':'<tr>' ) . "
+		<td style='padding: 10px; width: auto;'><b>$key:</b></td>
+		<td style='padding: 10px;width: 100%;'>$value</td>
+		</tr>
+		";
 	}
 }
+$message = "<table style='width: 50%;'>$message</table>";
 
-$message = "<table style='width: 100%;'>$message</table>";
 
-function adopt($text) {
-	return '=?UTF-8?B?'.Base64_encode($text).'?=';
+// От кого
+$mail->setFrom('adm@' . $_SERVER['HTTP_HOST'], 'Your best site');
+
+// Кому
+foreach ( $admin_email as $key => $value ) {
+	$mail->addAddress($value);
 }
+// Тема письма
+$mail->Subject = $form_subject;
 
-$headers = "MIME-Version: 1.0" . PHP_EOL .
-"Content-Type: text/html; charset=utf-8" . PHP_EOL .
-'From: '.adopt($project_name).' <'.$admin_email.'>' . PHP_EOL .
-'Reply-To: '.$admin_email.'' . PHP_EOL;
+// Тело письма
+$body = $message;
+// $mail->isHTML(true);  это если прям верстка
+$mail->msgHTML($body);
 
-mail($admin_email, adopt($form_subject), $message, $headers );
+// Приложения
+if ($_FILES){
+	foreach ( $_FILES['file']['tmp_name'] as $key => $value ) {
+		$mail->addAttachment($value, $_FILES['file']['name'][$key]);
+	}
+}
+$mail->send();
+?>

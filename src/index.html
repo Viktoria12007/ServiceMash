@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src 'self' data: 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; font-src 'self' https://fonts.gstatic.com data:; connect-src *"> -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="preload" href="./fonts/Play-Regular.woff" as="font" type="font/woff" crossorigin>
-  <link rel="preload" href="./fonts/Play-Bold.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="./fonts/Play-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/Play-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/Play-Regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="./fonts/Play-Bold.woff" as="font" type="font/woff" crossorigin>
   <title>Белгород. Металлообработка. Сервисмаш</title>
 </head>
 <body>
@@ -433,13 +434,29 @@
       </section>
       <section class="application page" id="application">
         <h2 class="title application__title">Оставить заявку</h2>
-        <form class="application-form">
-          <input type="text" class="application-input">
-          <input type="text" class="application-input">
-          <textarea class="application-input application-textarea"></textarea>
-          <input type="text" class="application-input">
-          <input type="text" class="application-input">
-          <button type="submit" class="button application-button">Оставить заявку</button>
+        <form class="application-form" autocomplete="on" action="mail.php" enctype="multipart/form-data" method="POST">
+          <input type="hidden" name="admin_email[]" value="viki12007@inbox.ru">
+          <input type="hidden" name="form_subject" value="Клиенты сервисмаша">
+          <label class="application-label">
+            <input class="input application-input" type="text" data-validate-field="name" name="name" placeholder="Ваше имя*">
+          </label>
+          <label class="application-label">
+            <input class="input application-input" type="text" data-validate-field="company" name="company" placeholder="Введите название вашей компании*">
+          </label>
+          <label class="application-label application-label_message">
+            <textarea class="input application-input application-input_message" type="text" data-validate-field="message" name="message" placeholder="Введите ваше сообщение*" rows="8" cols="45"></textarea>
+          </label>
+          <label class="application-label">
+            <input class="input application-input" type="tel" data-validate-field="tel" name="tel" placeholder="Номер телефона*">
+          </label>
+          <label class="application-label">
+            <input class="input application-input" type="email" data-validate-field="email" name="email" placeholder="Ваш e-mail*">
+          </label>
+          <label class="application-label application-label_file">
+            <input class="input application-input application-input_file" type="file" name="file[]" multiple>
+            <span class="names-files-box" >Прикрепить файл</span>
+          </label>
+          <button class="button application-button" type="submit">Оставить заявку</button>
         </form>
       </section>
       <section class="contacts page" id="contacts">
@@ -504,5 +521,7 @@
       </section>
     </div>
   </div>
+  <!-- <script src="./assets/just-validate/dist/js/just-validate.min.js"></script> -->
+  <!-- <script src="../node_modules/inputmask/dist/inputmask.min.js"></script> -->
 </body>
 </html>

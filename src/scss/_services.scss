@@ -1,13 +1,10 @@
 .services {
-  // background-color: green;
   &__title {
     margin-bottom: 30px;
   }
 }
 .services-list {
   display: flex;
-  // justify-content: space-between;
-  // align-items: center;
   justify-content: center;
   height: 100%;
   &__card:not(:last-child) {
@@ -18,23 +15,13 @@
   position: relative;
   width: 41%;
   height: 75%;
-
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
 &__link {
-  // position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
   height: 100%;
   padding: 10px;
-  // color: $color-orange;
-  // transition: color .4s ease-in-out;
-  // &:hover {
-  //   color: $color-black;
-  // }
   &:hover > .services-card__icon{
     -webkit-filter: drop-shadow(0 0 10px $color-orange) grayscale(0%);
     filter: drop-shadow(0 0 10px $color-orange) grayscale(0%);
@@ -51,12 +38,9 @@
   z-index: 20;
   width: 100%;
   height: 100%;
-  // object-fit: contain;
   border-radius: 5px;
   -webkit-filter: drop-shadow(0 0 10px $color-white) grayscale(100%);
   filter: drop-shadow(0 0 10px $color-white) grayscale(100%);
-  // -webkit-filter: grayscale(100%);
-  // filter: grayscale(100%);
   transition: filter .4s ease-in-out;
 }
 &__title {
@@ -69,11 +53,7 @@
 &__questions {
   align-self: flex-end;
   display: flex;
-  // flex-direction: column;
   align-items: center;
-  // color: $color-white;
-  // justify-self: baseline;
-  // justify-self: self-end;
   & > svg {
     width: 30px;
     height: 30px;
@@ -84,14 +64,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-
 }
 &__text {
   margin-right: 10px;
 }
-// &__title {
-//   position: relative;
-//   z-index: 30;
-// }
 }
 
