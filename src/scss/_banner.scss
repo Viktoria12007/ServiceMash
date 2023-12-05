@@ -1,26 +1,20 @@
 .banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding-top: 0;
-  // background-color: $color-black;
-  // background-image: url(../img/4.jpeg);
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // filter: grayscale(100%);
-}
-.banner-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  // transform: scale(-1, 1);
-  // min-width: 130%;
-  // height: 110%;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  background-image: url(../img/7.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .banner-box {
+  width: 50%;
+  min-width: 685px;
   position: relative;
   z-index: 5;
-  margin-bottom: 50px;
+  margin-top: auto;
+  margin-bottom: 30px;
   &__title {
     margin-bottom: 10px;
     font-weight: 700;
@@ -36,15 +30,11 @@
     background-image: $horizontal-gradient;
   }
   &__text {
-    width: 60%;
     margin-bottom: 20px;
   }
   &__link {
     display: inline-block;
     padding: 13px 20px 13px 20px;
-    // border-radius: 5px;
-    // -webkit-filter: drop-shadow(0 0 3px $color-orange);
-    // filter: drop-shadow(0 0 3px $color-orange);
     &_application {
       position: relative;
       z-index: 20;
@@ -81,16 +71,8 @@
           opacity: 1;
         }
       }
-      // &:focus {
-      //   outline: none;
-      //   &::before {
-      //     opacity: 1;
-      //   }
-      // }
     }
     &_details {
-      // position: relative;
-      // z-index: -1;
       background-image: none;
       border: 2px solid $color-orange;
       transition: background-color .4s ease-in-out, border-color .4s ease-in-out;
@@ -102,25 +84,19 @@
         background-color: $color-black;
         border-color: $color-black;
       }
-      // &:focus {
-      //   outline: none;
-      //   background-color: $color-black;
-      //   border-color: $color-black;
-      // }
     }
   }
 }
 .banner-list {
-  width: 55%;
   position: relative;
   z-index: 5;
-  display: flex;
-  align-items: flex-start;
-  // backdrop-filter: brightness(40%);
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 10px;
+  margin-bottom: auto;
   -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
   &__advantage {
-    // backdrop-filter: blur(30px);
     width: 150px;
     &:not(:last-child) {
     margin-right: 50px;

@@ -4,9 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // padding-top: 20px;
   padding-bottom: 20px;
-  // background-color: $color-black;
   background-color: transparent;
 }
 .logo-link {
@@ -17,14 +15,13 @@
   width: 140px;
   height: 50px;
 }
-// .header-nav {
-//   height: 100%;
-// }
 .header-list {
   display: flex;
   align-items: flex-start;
   &__item {
-
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     position: relative;
     padding-top: 30px;
     white-space: nowrap;
@@ -44,9 +41,6 @@
           filter: drop-shadow(0 10px 10px $color-orange);
           transition: opacity .4s ease-in-out;
       }
-      // &:focus {
-      //     outline: none;
-      // }
       &:hover > .header-list__link {
         color: $color-orange;
     }
@@ -59,15 +53,9 @@
       &:active::before {
         opacity: 1;
     }
-      // &:focus::before {
-      //     opacity: 1;
-      // }
   }
   &__link {
     transition: color .4s ease-in-out;
-    // &:focus .header-list__item::before {
-    //    opacity: 1;
-    // }
   &_action {
     text-decoration: underline;
   }
@@ -75,30 +63,30 @@
  &__contacts {
    display: flex;
    align-items: center;
-  & > svg {
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
-    fill: $color-white;
-  }
-  &_telephon {
-    display: block;
-    transition: color .4s ease-in-out;
-    & > svg {
-      transition: fill .4s ease-in-out;
-    }
-    &:hover {
-      color: $color-orange;
-    }
-    &:hover > svg {
-      fill: $color-orange;
-    }
-    &:active {
-      color: $color-orange;
-    }
-    &:active > svg {
-      fill: $color-orange;
-    }
+   &::before {
+     content: '';
+     display: block;
+     width: 20px;
+     height: 20px;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     margin-right: 5px;
+   }
+   &_address::before {
+     background-image: url('../img/address.svg');
+   }
+   &_telephone {
+     transition: color .4s ease-in-out;
+     &:hover {
+       color: $color-orange;
+     }
+     &:active {
+       color: $color-orange;
+     }
+     &::before {
+       background-image: url('../img/telephone.svg');
+     }
   }
 }
   &__button {
