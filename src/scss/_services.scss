@@ -1,7 +1,7 @@
 .services {
-  &__title {
-    margin-bottom: 30px;
-  }
+  //&__title {
+  //  margin-bottom: 30px;
+  //}
 }
 .services-list {
   display: flex;
@@ -15,58 +15,70 @@
   position: relative;
   width: 41%;
   height: 75%;
-&__link {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  &:hover > .services-card__icon{
-    -webkit-filter: drop-shadow(0 0 10px $color-orange) grayscale(0%);
-    filter: drop-shadow(0 0 10px $color-orange) grayscale(0%);
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    &:hover > .services-card__icon{
+      -webkit-filter: drop-shadow(0 0 10px $color-orange) grayscale(0%);
+      filter: drop-shadow(0 0 10px $color-orange) grayscale(0%);
+    }
   }
-}
   & * {
     position: relative;
     z-index: 30;
   }
-&__icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 20;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  -webkit-filter: drop-shadow(0 0 10px $color-white) grayscale(100%);
-  filter: drop-shadow(0 0 10px $color-white) grayscale(100%);
-  transition: filter .4s ease-in-out;
-}
-&__title {
-  font-weight: 600;
-  font-size: 27px;
-  line-height: 27px;
-  margin-bottom: 20px;
-  color: $color-orange;
-}
-&__questions {
-  align-self: flex-end;
-  display: flex;
-  align-items: center;
-  & > svg {
-    width: 30px;
-    height: 30px;
-    fill: $color-orange;
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    -webkit-filter: drop-shadow(0 0 10px $color-white) grayscale(100%);
+    filter: drop-shadow(0 0 10px $color-white) grayscale(100%);
+    transition: filter .4s ease-in-out;
   }
-}
-&__action {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-&__text {
-  margin-right: 10px;
-}
+  &__title {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 27px;
+    margin-bottom: 30px;
+    color: $color-orange;
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+  }
+  &__price {
+    //color: $color-orange;
+    //font-weight: 900;
+    display: inline-block;
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+  }
+  &__questions {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    & > svg {
+      width: 30px;
+      height: 30px;
+      fill: $color-orange;
+    }
+  }
+  &__action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+  }
+  &__text {
+    margin-right: 10px;
+  }
 }
 

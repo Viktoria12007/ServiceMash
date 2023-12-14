@@ -1,4 +1,88 @@
 .footer {
   position: relative;
-  background-color: black;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: $color-orange;
+  &__logo {
+    width: 170px;
+    height: 70px;
+  }
+  &__socials {
+    &-list {
+      display: flex;
+      align-items: center;
+    }
+    &-item {
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+    &-link {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-size: cover;
+      transition: background-image .4s ease-in-out;
+      &:focus {
+        outline: none;
+      }
+      &_telegram {
+        background-image: $telegram-icon;
+        &:hover {
+          background-image: $telegram-icon-hover;
+        }
+        &:focus {
+          background-image: $telegram-icon-hover;
+        }
+        &:active {
+          background-image: $telegram-icon-hover;
+        }
+      }
+      &_whatsapp {
+        background-image: $whatsapp-icon;
+        &:hover {
+          background-image: $whatsapp-icon-hover;
+        }
+        &:focus {
+          background-image: $whatsapp-icon-hover;
+        }
+        &:active {
+          background-image: $whatsapp-icon-hover;
+        }
+      }
+      &_viber {
+        background-image: $viber-icon;
+        &:hover {
+          background-image: $viber-icon-hover;
+        }
+        &:focus {
+          background-image: $viber-icon-hover;
+        }
+        &:active {
+          background-image: $viber-icon-hover;
+        }
+      }
+    }
+  }
+  &-list {
+    display: flex;
+    //flex-direction: column;
+    &__item {
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+    &__link {
+      transition: color .4s ease-in-out;
+      &:hover {
+        color: $color-black;
+      }
+      &:active {
+        color: $color-black;
+      }
+    }
+  }
 }

@@ -2,14 +2,14 @@
   position: relative;
   z-index: 5;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
-  padding-bottom: 20px;
+  //padding-bottom: 20px;
   background-color: transparent;
 }
 .logo-link {
   display: inline-block;
-  margin-top: 20px;
+  //margin-top: 20px;
 }
 .logo {
   width: 140px;
@@ -27,6 +27,15 @@
     white-space: nowrap;
     &:not(:last-child) {
       margin-right: 15px;
+    }
+    & a {
+      transition: color .4s ease-in-out;
+      &:hover {
+        color: $color-orange;
+      }
+      &:active {
+        color: $color-orange;
+      }
     }
       &::before {
           content: '';
@@ -55,10 +64,9 @@
     }
   }
   &__link {
-    transition: color .4s ease-in-out;
-  &_action {
-    text-decoration: underline;
-  }
+    &_action {
+      text-decoration: underline;
+    }
 }
  &__contacts {
    display: flex;
@@ -77,17 +85,15 @@
      background-image: url('../img/address.svg');
    }
    &_telephone {
-     transition: color .4s ease-in-out;
-     &:hover {
-       color: $color-orange;
-     }
-     &:active {
-       color: $color-orange;
-     }
      &::before {
        background-image: url('../img/telephone.svg');
      }
   }
+   &_mail {
+     &::before {
+       background-image: url('../img/mail.svg');
+     }
+   }
 }
   &__button {
     font-weight: 400;
