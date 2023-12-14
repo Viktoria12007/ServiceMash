@@ -2,17 +2,19 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src 'self' data: 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; font-src 'self' https://fonts.gstatic.com data:; connect-src *"> -->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src * data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; object-src *; style-src 'self' data: 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; font-src 'self' https://fonts.gstatic.com data:; connect-src *"> -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="preload" href="./fonts/Play-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/Play-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/Play-Regular.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="./fonts/Play-Bold.woff" as="font" type="font/woff" crossorigin>
   <title>Белгород. Металлообработка. Сервисмаш</title>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=5f1552c9-6f8b-4fe1-a74d-02901666ae87&lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="wrapper container">
     <nav class="scroll-nav">
       <ul class="scroll-list">
         <li class="scroll-list__item">
@@ -31,7 +33,6 @@
     </nav>
     <div class="maincontent container">
       <section class="banner page" id="banner">
-
         <header class="header">
           <a class="logo-link js-nav-link" href="#banner">
             <img class="logo" src="./img/logo.png" alt="Логотип">
@@ -52,16 +53,19 @@
                 <a class="header-list__link header-list__link_action js-nav-link" href="#contacts">Карта проезда</a>
               </li>
               <li class="header-list__item">
-                  <a class="header-list__contacts header-list__contacts_telephone" href="tel:+79194347308">+79194347308</a>
-                  <a class="header-list__contacts_telephone" href="tel:+79107360600">+79107360600</a>
+                  <a class="header-list__contacts header-list__contacts_telephone" href="tel:+79194347308">+7 919 434 73 08</a>
+                  <a class="header-list__contacts_telephone" href="tel:+79107360600">+7 910 736 06 00</a>
 <!--                <button class="button header-list__button header-list__link_action" type="button">Заказать звонок</button>-->
+              </li>
+              <li class="header-list__item">
+                <a class="header-list__link header-list__contacts header-list__contacts_mail" href="mailto:servismash@gmail.com">servismash@gmail.com</a>
               </li>
             </ul>
           </nav>
         </header>
         <div class="banner-box">
             <h1 class="title banner-box__title">Металлообработка</h1>
-            <p class="banner-box__text">Наша компания 11 лет на рынке. Выполняем токарную и фрезерную металлообработку. Гарантируем качество и индивидуальный подход к каждому клиенту!</p>
+            <p class="banner-box__text">Наша компания 11 лет на рынке. Выполняем различные виды металлообработки на станках ЧПУ. Гарантируем качество и индивидуальный подход к каждому клиенту!</p>
               <div class="banner-box__links">
                 <a href="#application" class="button banner-box__link banner-box__link_application js-nav-link">Оставить заявку</a>
                 <a href="#services" class="button banner-box__link banner-box__link_details js-nav-link">Подробнее</a>
@@ -129,7 +133,7 @@
                               <g>
                  </g>
               </svg>
-              <p class="banner-list__text">Профессиональное оборудование</p>
+              <p class="banner-list__text">Высокоточные станки с ЧПУ</p>
           </li>
               <li class="banner-list__advantage">
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -205,7 +209,7 @@
             <img class="services-card__icon" src="./img/tokarnaya-obrabotka.jpg" alt="Такарная металлообработка">
             <div class="services-card__head">
           <h3 class="services-card__title">Токарная металлообработка</h3>
-          <span class="services-card__price">от 1000 р.</span>
+          <div class="services-card__price">Минимальная сумма общего заказа 10 000 р.</div>
           </div>
           <div class="services-card__questions">
             <div class="services-card__action">
@@ -268,7 +272,7 @@
           <img class="services-card__icon" src="./img/frezernaya-obrabotka.jpg" alt="Фрезирная металлообработка">
           <div class="services-card__head">
           <h3 class="services-card__title">Фрезерная металлообработка</h3>
-          <span class="services-card__price">от 2000 р.</span>
+          <div class="services-card__price">Минимальная сумма общего заказа 10 000 р.</div>
           </div>
           <div class="services-card__questions">
             <div class="services-card__action">
@@ -331,7 +335,7 @@
       <section class="application page" id="application">
         <h2 class="title application__title">Оставить заявку</h2>
         <form class="application-form" autocomplete="on" action="mail.php" enctype="multipart/form-data" method="POST">
-          <input type="hidden" name="admin_email[]" value="viki12007@inbox.ru">
+          <input type="hidden" name="admin_email[]" value="servismash@gmail.com">
           <input type="hidden" name="form_subject" value="Клиенты сервисмаша">
           <label class="application-label">
             <input class="input application-input" type="text" data-validate-field="name" name="name" placeholder="Ваше имя*">
@@ -340,7 +344,7 @@
             <input class="input application-input" type="text" data-validate-field="company" name="company" placeholder="Введите название вашей компании*">
           </label>
           <label class="application-label application-label_message">
-            <textarea class="input application-input application-input_message" type="text" data-validate-field="message" name="message" placeholder="Введите ваше сообщение*" rows="8" cols="45"></textarea>
+            <textarea class="input application-input application-input_message" data-validate-field="message" name="message" placeholder="Введите ваше сообщение*" rows="8" cols="45"></textarea>
           </label>
           <label class="application-label">
             <input class="input application-input" type="tel" data-validate-field="tel" name="tel" placeholder="Номер телефона*">
@@ -356,68 +360,72 @@
         </form>
       </section>
       <section class="contacts page" id="contacts">
-        <div class="contacts-map">
-          <div class="contacts-box">
-            <h2 class="title contacts__title">Контакты</h2>
+          <h2 class="title contacts__title">Контакты</h2>
+          <div class="contacts__wrap">
+            <div id="map" class="contacts-map"></div>
             <ul class="contacts-list">
-            <li class="contacts-list__item">
-              <svg></svg>
-              <span class="contacts-list__info">ул.Сургутская д.121</span>
-            </li>
-            <li class="contacts-list__item">
-              <svg></svg>
-              <sapn class="contacts-list__info">8-919-432-69-12</sapn>
-            </li>
-            <li class="contacts-list__item">
-              <svg></svg>
-              <sapn class="contacts-list__info">viki12007@inbox.ru</sapn>
-            </li>
-            <li class="contacts-list__item">
-              <svg></svg>
-              <div class="contacts-list__wrap"><span class="contacts-list__info">Пн-Пт</span><sapn class="contacts-list__info">c 8:00-18:00</sapn></div>
-            </li>
+                <li class="contacts-list__item">
+                    <div class="contacts-list__info contacts-list__info_address">г.Белгород ул.Речная д.49</div>
+                </li>
+                <li class="contacts-list__item">
+                    <a class="contacts-list__info contacts-list__info_telephone" href="tel:+79194347308">+7 919 434 73 08</a>
+                    <a class="contacts-list__info" href="tel:+79107360600">+7 910 736 06 00</a>
+                </li>
+                <li class="contacts-list__item">
+                    <a class="contacts-list__info contacts-list__info_mail" href="mailto:servismash@gmail.com">servismash@gmail.com</a>
+                </li>
+                <li class="contacts-list__item">
+                    <div class="contacts-list__info contacts-list__info_mode">Пн-Пт 8:00-17:00</div>
+                    <div class="contacts-list__info">Cб-Вс 10:00-15:00</div>
+                </li>
             </ul>
-            </div>
-        </div>
+          </div>
         <footer class="footer">
-          <a class="logo-link" href="#">
-            <img class="logo" src="#" alt="Логотип">
+          <a class="logo-link js-nav-link" href="#banner">
+            <img class="footer__logo" src="./img/logo-black.png" alt="Логотип">
           </a>
+          <ul class="footer__socials-list">
+            <li class="footer__socials-item">
+                <a class="footer__socials-link footer__socials-link_telegram" href="https://t.me/egik93" target="_blank" aria-label="Telergam"></a>
+            </li>
+            <li class="footer__socials-item">
+                <a class="footer__socials-link footer__socials-link_whatsapp" href="https://wa.me/79194347308" target="_blank" aria-label="Whatsapp"></a>
+            </li>
+            <li class="footer__socials-item">
+                <a class="footer__socials-link footer__socials-link_viber" href="viber://chat?number=%2B79194347308" target="_blank" aria-label="Viber"></a>
+            </li>
+          </ul>
           <nav class="footer-nav">
             <ul class="footer-list">
-              <li class="footer-list__item">Главная</li>
-              <li class="footer-list__item">Услуги</li>
-              <li class="footer-list__item">Заявка</li>
-              <li class="footer-list__item">Контакты</li>
+              <li class="footer-list__item">
+                  <a class="footer-list__link js-nav-link" href="#banner">Главная</a>
+              </li>
+              <li class="footer-list__item">
+                  <a class="footer-list__link js-nav-link" href="#services">Услуги</a>
+              </li>
+              <li class="footer-list__item">
+                  <a class="footer-list__link js-nav-link" href="#application">Заявка</a>
+              </li>
+              <li class="footer-list__item">
+                  <a class="footer-list__link js-nav-link" href="#contacts">Контакты</a>
+              </li>
             </ul>
           </nav>
-          <ul class="footer-list-socials">
-            <li class="footer-list-socials__item">
-              <a class="footer-list-socials__link" href="#">
-              <svg></svg>
-          </a>
-        </li>
-            <li class="footer-list-socials__item">
-              <a class="footer-list-socials__link" href="#">
-              <svg></svg>
-          </a>
-        </li>
-            <li class="footer-list-socials__item">
-              <a class="footer-list-socials__link" href="#">
-            <svg></svg>
-          </a>
-        </li>
-            <li class="footer-list-socials__item">
-              <a class="footer-list-socials__link" href="#">
-            <svg></svg>
-          </a>
-        </li>
-          </ul>
         </footer>
       </section>
     </div>
   </div>
-  <!-- <script src="./assets/just-validate/dist/js/just-validate.min.js"></script> -->
-  <!-- <script src="../node_modules/inputmask/dist/inputmask.min.js"></script> -->
+  <div class="result-modal">
+      <div class="result-modal__content">
+          <button type="button" class="result-modal__close">
+              <svg height="311pt" viewBox="0 0 311 311.07733" width="311pt" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m16.035156 311.078125c-4.097656 0-8.195312-1.558594-11.308594-4.695313-6.25-6.25-6.25-16.382812 0-22.632812l279.0625-279.0625c6.25-6.25 16.382813-6.25 22.632813 0s6.25 16.382812 0 22.636719l-279.058594 279.058593c-3.136719 3.117188-7.234375 4.695313-11.328125 4.695313zm0 0"/>
+                  <path d="m295.117188 311.078125c-4.097657 0-8.191407-1.558594-11.308594-4.695313l-279.082032-279.058593c-6.25-6.253907-6.25-16.386719 0-22.636719s16.382813-6.25 22.636719 0l279.058594 279.0625c6.25 6.25 6.25 16.382812 0 22.632812-3.136719 3.117188-7.230469 4.695313-11.304687 4.695313zm0 0"/>
+              </svg>
+          </button>
+          <div class="result-modal__text"></div>
+      </div>
+  </div>
+  <div class="overlay"></div>
 </body>
 </html>
